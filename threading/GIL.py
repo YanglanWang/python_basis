@@ -12,6 +12,7 @@ def multithreading(l):
     threads=[]
     for i in range(4):
         t=threading.Thread(target=job,args=(copy.copy(l),q),name='T%i'%i)
+        # the reason why use copy.copy is that the same list l will be used four times, copy.copy made the original list unchanged
         t.start()
         threads.append(t)
     [t.join() for t in threads]
